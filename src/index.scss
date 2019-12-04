@@ -1,1 +1,16 @@
 @import '~bootstrap/scss/bootstrap';
+
+.club-row {
+  border: 1px solid red;
+  display: flex;
+  flex-direction: row;
+
+  div {
+    border: 1px solid blue;
+    width: 25%;
+  }
+}
+
+.clubs-canvas {
+  border: 1px solid magenta;
+}

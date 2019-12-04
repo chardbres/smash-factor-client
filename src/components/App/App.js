@@ -9,6 +9,9 @@ import SignIn from '../SignIn/SignIn'
 import SignOut from '../SignOut/SignOut'
 import ChangePassword from '../ChangePassword/ChangePassword'
 
+// Hooks
+import Clubs from '../Clubs/Clubs.js'
+
 class App extends Component {
   constructor () {
     super()
@@ -53,6 +56,9 @@ class App extends Component {
           )} />
           <AuthenticatedRoute user={user} path='/change-password' render={() => (
             <ChangePassword alert={this.alert} user={user} />
+          )} />
+          <AuthenticatedRoute user={user} path='/clubs' render={() => (
+            <Clubs user={user} />
           )} />
         </main>
       </Fragment>
