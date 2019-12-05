@@ -1,7 +1,7 @@
 import React from 'react'
 import '../../index.scss'
 
-const ClubForm = ({ shot, handleSubmit, handleChange }) => (
+const ShotForm = ({ shot, handleSubmit, handleChange }) => (
   <form className="shot-form" onSubmit={handleSubmit}>
     <div>
       <input
@@ -28,4 +28,4 @@ const ClubForm = ({ shot, handleSubmit, handleChange }) => (
   </form>
 )
 
-export default ClubForm
+export default ShotForm

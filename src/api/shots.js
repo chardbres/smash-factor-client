@@ -12,3 +12,16 @@ export const index = (id, user) => {
   })
 }
 // --------------------
+
+// Creates a single club
+export const createShot = (id, user, data) => {
+  return axios({
+    url: `${apiUrl}/clubs/${id}`,
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${user.token}`
+    },
+    data: data
+  })
+}
+// --------------------
