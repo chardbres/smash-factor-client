@@ -1,9 +1,14 @@
 import React, { useState, useEffect } from 'react'
-import { index } from '../../api/clubs'
+import { createClub, index } from '../../api/clubs'
+import SingleClub from './SingleClub.js'
+import ClubForm from '../shared/ClubForm.js'
+// import apiUrl from '../../apiConfig.js'
+// import axios from 'axios'
 import '../../index.scss'
 
 const Clubs = props => {
   const [clubs, setClubs] = useState([])
+  const [club, setClub] = useState({ style: '', brand: '', loft: '', stiffness: '' })
 
   useEffect(() => {
     index(props.user)
@@ -11,22 +16,51 @@ const Clubs = props => {
       .catch(console.error)
   }, [])
 
-  // Maps each club in the data response to a list item for display
+  const create = () => {
+    createClub({ club }, props.user)
+      .then(res => clubs.push(res.data.club))
+      .then(console.log(clubs))
+      .catch(console.error)
+  }
+
+  const handleChange = event => {
+    event.persist()
+    setClub(club => ({ ...club, [event.target.name]: event.target.value }))
+  }
+
+  const handleSubmit = event => {
+    event.preventDefault()
+    create()
+  }
+
   const clubsList = clubs.map(club => (
-    <row className="club-row" key={club.id}>
-      <div><h4>{club.style}</h4></div>
-      <div><h4>{club.brand}</h4></div>
-      <div><h4>{club.loft}</h4></div>
-      <div><h4>{club.stiffness}</h4></div>
-    </row>
+    <SingleClub key={club._id}
+      id={club._id}
+      style={club.style}
+      brand={club.brand}
+      loft={club.loft}
+      stiffness={club.stiffness}
+      user={props.user}
+    />
   ))
 
   return (
     <div className="clubs-canvas">
-      <h4>Clubs!</h4>
+      <h3>Your Clubs</h3>
       <div className="container">
+        <row className="title-row">
+          <div><h4>Type</h4></div>
+          <div><h4>Set</h4></div>
+          <div><h4>Loft</h4></div>
+          <div><h4>Stiffness</h4></div>
+        </row>
         {clubsList}
       </div>
+      <ClubForm
+        club={club}
+        handleChange={handleChange}
+        handleSubmit={handleSubmit}
+      />
     </div>
   )
 }

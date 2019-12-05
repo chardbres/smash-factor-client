@@ -10,6 +10,7 @@ import SignOut from '../SignOut/SignOut'
 import ChangePassword from '../ChangePassword/ChangePassword'
 
 // Hooks
+import Club from '../Clubs/Club.js'
 import Clubs from '../Clubs/Clubs.js'
 
 class App extends Component {
@@ -57,8 +58,11 @@ class App extends Component {
           <AuthenticatedRoute user={user} path='/change-password' render={() => (
             <ChangePassword alert={this.alert} user={user} />
           )} />
-          <AuthenticatedRoute user={user} path='/clubs' render={() => (
+          <AuthenticatedRoute user={user} exact path='/clubs' render={() => (
             <Clubs user={user} />
+          )} />
+          <AuthenticatedRoute user={user} exact path='/clubs/:id' render={(props) => (
+            <Club {...props} user={user} />
           )} />
         </main>
       </Fragment>

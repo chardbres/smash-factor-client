@@ -33,7 +33,8 @@ class SignIn extends Component {
         message: messages.signInSuccess,
         variant: 'success'
       }))
-      .then(() => history.push('/'))
+      // On successful sign-in, redirects to the full list of clubs.
+      .then(() => history.push('/clubs'))
       .catch(error => {
         console.error(error)
         this.setState({ email: '', password: '' })

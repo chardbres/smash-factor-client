@@ -1,5 +1,6 @@
 @import '~bootstrap/scss/bootstrap';
 
+// Styling for each row of club data
 .club-row {
   border: 1px solid red;
   display: flex;
@@ -7,10 +8,53 @@
 
   div {
     border: 1px solid blue;
+    display: flex;
+    width: 25%;
+
+    h5 {
+      margin: 0 0 0 2%;
+    }
+  }
+}
+// -------------------
+
+.clubs-canvas {
+  border: 1px solid magenta;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  h3 {
+    font-weight: bold;
+    margin: 0 auto 2%;
+  }
+}
+
+.club-form {
+  display: flex;
+  flex-direction: row;
+
+  * {
     width: 25%;
   }
 }
 
-.clubs-canvas {
-  border: 1px solid magenta;
+// Styling for the title row at the top of the club list
+.title-row {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+
+  div {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    width: 25%;
+
+    * {
+      font-weight: bold;
+      margin: auto;
+    }
+  }
 }
+// -------------------
