@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import { Redirect } from 'react-router-dom'
 import { deleteClub, getClub, updateClub } from '../../api/clubs'
-import SingleClub from '../Shared/SingleClub.js'
-import ClubForm from '../Shared/ClubForm.js'
+import SingleClub from '../Shared/SingleClub'
+import ClubForm from '../Shared/ClubForm'
+import Shots from '../Shots/Shots'
 import '../../index.scss'
 
 const Club = props => {
   const [club, setClub] = useState({ style: '', brand: '', loft: '', flex: '' })
   const [deleted, setDeleted] = useState(false)
-  // const [updated, setUpdated] = useState(false)
 
   useEffect(() => {
     getClub(props.match.params.id, props.user)
@@ -64,15 +64,20 @@ const Club = props => {
           flex={club.flex}
           user={props.user}
         />
+        <button onClick={destroy}>Delete Club</button>
         <div className="form-header"><h6>Use the form to make changes to this club</h6></div>
         <ClubForm
           club={club}
           handleChange={handleChange}
           handleSubmit={handleSubmit}
         />
-        <button onClick={destroy}>Delete Club</button>
       </div>
+      <Shots
+        club={club._id}
+        user={props.user}
+      />
     </div>
+
   )
 }
 
