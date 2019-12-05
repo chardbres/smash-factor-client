@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import { createClub, index } from '../../api/clubs'
-import SingleClub from './SingleClub.js'
-import ClubForm from '../shared/ClubForm.js'
-// import apiUrl from '../../apiConfig.js'
-// import axios from 'axios'
+import SingleClub from '../Shared/SingleClub.js'
+import ClubForm from '../Shared/ClubForm.js'
 import '../../index.scss'
 
 const Clubs = props => {
   const [clubs, setClubs] = useState([])
-  const [club, setClub] = useState({ style: '', brand: '', loft: '', stiffness: '' })
+  const [club, setClub] = useState({ style: '', brand: '', loft: '', flex: '' })
 
   useEffect(() => {
     index(props.user)
@@ -17,9 +15,13 @@ const Clubs = props => {
   }, [])
 
   const create = () => {
-    createClub({ club }, props.user)
+    createClub(props.user, { club })
       .then(res => clubs.push(res.data.club))
-      .then(console.log(clubs))
+      // Re-runs the index to get the club list with the newly-created club for re-render
+      .then(
+        index(props.user)
+          .then(res => setClubs(res.data.clubs))
+      )
       .catch(console.error)
   }
 
@@ -39,7 +41,7 @@ const Clubs = props => {
       style={club.style}
       brand={club.brand}
       loft={club.loft}
-      stiffness={club.stiffness}
+      flex={club.flex}
       user={props.user}
     />
   ))
@@ -49,18 +51,19 @@ const Clubs = props => {
       <h3>Your Clubs</h3>
       <div className="container">
         <row className="title-row">
-          <div><h4>Type</h4></div>
-          <div><h4>Set</h4></div>
-          <div><h4>Loft</h4></div>
-          <div><h4>Stiffness</h4></div>
+          <div><h5>Type</h5></div>
+          <div><h5>Set</h5></div>
+          <div><h5>Loft</h5></div>
+          <div><h5>Flex</h5></div>
         </row>
         {clubsList}
+        <div className="form-header"><h6>Use the form to add a new club</h6></div>
+        <ClubForm
+          club={club}
+          handleChange={handleChange}
+          handleSubmit={handleSubmit}
+        />
       </div>
-      <ClubForm
-        club={club}
-        handleChange={handleChange}
-        handleSubmit={handleSubmit}
-      />
     </div>
   )
 }

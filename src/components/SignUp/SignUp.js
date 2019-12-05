@@ -35,7 +35,8 @@ class SignUp extends Component {
         message: messages.signUpSuccess,
         variant: 'success'
       }))
-      .then(() => history.push('/'))
+      // Drops user into /clubs page on sign-up.
+      .then(() => history.push('/clubs'))
       .catch(error => {
         console.error(error)
         this.setState({ email: '', password: '', passwordConfirmation: '' })

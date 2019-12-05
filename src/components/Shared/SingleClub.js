@@ -5,6 +5,7 @@ import '../../index.scss'
 const SingleClub = props => {
   const [clicked, setClicked] = useState(false)
 
+  // Redirects the user to a detail view of the club when the row is clicked
   if (clicked) {
     return <Redirect to={
       { pathname: `/clubs/${props.id}` }
@@ -17,7 +18,7 @@ const SingleClub = props => {
         <div><h5>{props.style}</h5></div>
         <div><h5>{props.brand}</h5></div>
         <div><h5>{props.loft}&#xb0;</h5></div>
-        <div><h5>{props.stiffness}</h5></div>
+        <div><h5>{props.flex}</h5></div>
       </row>
     </div>
   )

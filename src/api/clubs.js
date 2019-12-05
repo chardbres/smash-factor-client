@@ -1,6 +1,7 @@
 import apiUrl from '../apiConfig'
 import axios from 'axios'
 
+// Indexes all clubs
 export const index = user => {
   return axios({
     url: `${apiUrl}/clubs`,
@@ -10,8 +11,10 @@ export const index = user => {
     }
   })
 }
+// --------------------
 
-export const createClub = (data, user) => {
+// Creates a single club
+export const createClub = (user, data) => {
   return axios({
     url: `${apiUrl}/clubs`,
     method: 'POST',
@@ -21,7 +24,9 @@ export const createClub = (data, user) => {
     data: data
   })
 }
+// --------------------
 
+// Deletes a single club
 export const deleteClub = (id, user) => {
   return axios({
     url: `${apiUrl}/clubs/${id}`,
@@ -31,13 +36,30 @@ export const deleteClub = (id, user) => {
     }
   })
 }
+// --------------------
 
+// Reads a single club
 export const getClub = (id, user) => {
   return axios({
     url: `${apiUrl}/clubs/${id}`,
     method: 'GET',
     headers: {
+      id: `${user._id}`,
       Authorization: `Bearer ${user.token}`
     }
   })
 }
+// --------------------
+
+// Updates a single club
+export const updateClub = (id, user, data) => {
+  return axios({
+    url: `${apiUrl}/clubs/${id}`,
+    method: 'PATCH',
+    headers: {
+      Authorization: `Bearer ${user.token}`
+    },
+    data: data
+  })
+}
+// --------------------

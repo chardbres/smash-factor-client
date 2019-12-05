@@ -2,24 +2,22 @@
 
 // Styling for each row of club data
 .club-row {
-  border: 1px solid red;
+  border: 1px solid gray;
   display: flex;
   flex-direction: row;
 
   div {
-    border: 1px solid blue;
     display: flex;
     width: 25%;
 
     h5 {
-      margin: 0 0 0 2%;
+      margin: 0 auto;
     }
   }
 }
 // -------------------
 
 .clubs-canvas {
-  border: 1px solid magenta;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -31,19 +29,28 @@
 }
 
 .club-form {
+  border: 1px solid red;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 
-  * {
-    width: 25%;
+  div {
+    justify-content: center;
+    display: flex;
+    width: 100%;
+
+    * {
+      width: 25%;
+    }
   }
 }
 
 // Styling for the title row at the top of the club list
 .title-row {
   align-items: center;
+  border: 3px solid black;
   display: flex;
   flex-direction: row;
+  margin-bottom: 2%;
 
   div {
     align-items: center;
@@ -58,3 +65,15 @@
   }
 }
 // -------------------
+
+.form-header {
+  background-color: #A0A0A0;
+  display: flex;
+  justify-content: center;
+  margin: 2% auto 0;
+
+  * {
+    font-weight: bold;
+    margin: auto;
+  }
+}
