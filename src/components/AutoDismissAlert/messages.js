@@ -7,5 +7,7 @@ export default {
   changePasswordSuccess: 'Password changed successfully!',
   changePasswordFailure: 'Failed to change passwords. Check your old password and try again.',
   // Club crud failure messages
-  clubCreateFailure: 'Failed to create club! Make sure the club is unique and try again'
+  clubCreateFailure: 'Failed to create club! Make sure the club style is filled in, and that the club is unique and try again',
+  clubCreateSuccess: 'Club was successfully created!',
+  clubDeleteFailure: 'Failed to delete club! Make sure the club style is filled in, and that the club is unique and try again'
 }

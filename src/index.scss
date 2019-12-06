@@ -85,3 +85,14 @@
     margin: auto;
   }
 }
+
+.welcome-screen {
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  * {
+    margin: auto;
+  }
+}

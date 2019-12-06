@@ -3,6 +3,7 @@ import { Redirect } from 'react-router-dom'
 import { deleteClub, getClub, updateClub } from '../../api/clubs'
 import SingleClub from '../Shared/SingleClub'
 import ClubForm from '../Shared/ClubForm'
+import messages from '../AutoDismissAlert/messages'
 import '../../index.scss'
 
 const Club = props => {
@@ -19,7 +20,15 @@ const Club = props => {
   const destroy = () => {
     deleteClub(club._id, props.user)
       .then(() => setDeleted(true))
-      .catch(console.error)
+      .catch(error => {
+        console.error(error)
+        setClub({ style: '', brand: '', loft: '', flex: '' })
+        alert({
+          heading: 'Sign In Failed',
+          message: messages.clubDeleteFailure,
+          variant: 'danger'
+        })
+      })
   }
 
   // Redirects the user to the main clubs page upon club deletion

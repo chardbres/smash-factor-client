@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
+import { withRouter } from 'react-router-dom'
 import { createClub, index } from '../../api/clubs'
 import SingleClub from '../Shared/SingleClub.js'
 import ClubForm from '../Shared/ClubForm.js'
 import messages from '../AutoDismissAlert/messages'
-
 import '../../index.scss'
 
 const Clubs = props => {
@@ -19,6 +19,12 @@ const Clubs = props => {
   const create = () => {
     createClub(props.user, { club })
       .then(res => clubs.push(res.data.club))
+      // Alerts user to successful creation of club
+      .then(() => alert({
+        heading: 'Club created successfully!',
+        message: messages.clubCreateSuccess,
+        variant: 'success'
+      }))
       // Re-runs the index to get the club list with the newly-created club for re-render
       .then(
         index(props.user)
@@ -28,11 +34,10 @@ const Clubs = props => {
         console.error(error)
         setClub({ style: '', brand: '', loft: '', flex: '' })
         alert({
-          heading: 'Club creation failed!',
+          heading: 'Failed to create club!',
           message: messages.clubCreateFailure,
           variant: 'danger'
         })
-      // .catch(console.error)
       })
   }
 
@@ -79,4 +84,4 @@ const Clubs = props => {
   )
 }
 
-export default Clubs
+export default withRouter(Clubs)

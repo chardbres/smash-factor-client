@@ -12,6 +12,7 @@ import ChangePassword from '../ChangePassword/ChangePassword'
 // Hooks
 import Club from '../Clubs/Club.js'
 import Clubs from '../Clubs/Clubs.js'
+import Home from '../Home/Home.js'
 
 class App extends Component {
   constructor () {
@@ -46,7 +47,9 @@ class App extends Component {
           />
         ))}
         <main className="container">
-          <Route path='/' />
+          <Route exact path='/' render={() => (
+            <Home />
+          )} />
           <Route path='/sign-up' render={() => (
             <SignUp alert={this.alert} setUser={this.setUser} />
           )} />
@@ -60,10 +63,10 @@ class App extends Component {
             <ChangePassword alert={this.alert} user={user} />
           )} />
           <AuthenticatedRoute user={user} exact path='/clubs' render={() => (
-            <Clubs user={user} />
+            <Clubs alert={this.alert} user={user} />
           )} />
           <AuthenticatedRoute user={user} exact path='/clubs/:id' render={(props) => (
-            <Club {...props} user={user} />
+            <Club alert={this.alert} {...props} user={user} />
           )} />
         </main>
       </Fragment>
