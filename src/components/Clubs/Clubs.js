@@ -33,8 +33,9 @@ const Clubs = props => {
           variant: 'danger'
         })
       // .catch(console.error)
-    }
+    })
   }
+  
 
   const handleChange = event => {
     event.persist()
