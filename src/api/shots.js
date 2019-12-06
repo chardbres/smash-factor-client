@@ -3,9 +3,6 @@ import axios from 'axios'
 
 // Indexes all shots
 export const index = (id, user) => {
-  console.log('Logs!')
-  console.log(id)
-  console.log(user)
   return axios({
     url: `${apiUrl}/shots`,
     method: 'GET',
