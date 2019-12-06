@@ -7,7 +7,7 @@ export const index = (id, user) => {
   console.log(id)
   console.log(user)
   return axios({
-    url: `${apiUrl}/`,
+    url: `${apiUrl}/shots`,
     method: 'GET',
     headers: {
       Authorization: `Bearer ${user.token}`
@@ -19,7 +19,7 @@ export const index = (id, user) => {
 // Creates a single shot
 export const createShot = (id, user, data) => {
   return axios({
-    url: `${apiUrl}/clubs/${id}`,
+    url: `${apiUrl}/clubs/shots/${id}`,
     method: 'POST',
     headers: {
       Authorization: `Bearer ${user.token}`
