@@ -3,7 +3,6 @@ import { Redirect } from 'react-router-dom'
 import { deleteClub, getClub, updateClub } from '../../api/clubs'
 import SingleClub from '../Shared/SingleClub'
 import ClubForm from '../Shared/ClubForm'
-import Shots from '../Shots/Shots'
 import '../../index.scss'
 
 const Club = props => {
@@ -72,11 +71,11 @@ const Club = props => {
           handleSubmit={handleSubmit}
         />
       </div>
-      <Shots
-        club={club._id}
-        user={props.user}
-      />
     </div>
+  // <Shots
+  //   club={props.match.params.id}
+  //   user={props.user}
+  // />
 
   )
 }
