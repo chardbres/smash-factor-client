@@ -19,6 +19,12 @@ const Club = props => {
   // Removes a single resource via the axios call in api/clubs.js
   const destroy = () => {
     deleteClub(club._id, props.user)
+      // Alerts user to successful club deletion
+      .then(() => alert({
+        heading: 'Club deleted successfully!',
+        message: messages.clubDeleteSuccess,
+        variant: 'success'
+      }))
       .then(() => setDeleted(true))
       .catch(error => {
         console.error(error)

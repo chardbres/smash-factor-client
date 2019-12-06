@@ -13,6 +13,15 @@ const Clubs = props => {
   useEffect(() => {
     index(props.user)
       .then(res => setClubs(res.data.clubs))
+      // Attempt at function to sort clubs alphabetically by style upon indexing
+      .then(clubs.sort(function (a, b) {
+        if (a.clubs.style < b.clubs.club.style) {
+          return -1
+        }
+        if (a.clubs.style > b.clubs.club.style) {
+          return 1
+        }
+      }))
       .catch(console.error)
   }, [])
 
