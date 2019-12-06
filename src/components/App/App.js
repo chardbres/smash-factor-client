@@ -46,6 +46,7 @@ class App extends Component {
           />
         ))}
         <main className="container">
+          <Route path='/' />
           <Route path='/sign-up' render={() => (
             <SignUp alert={this.alert} setUser={this.setUser} />
           )} />
