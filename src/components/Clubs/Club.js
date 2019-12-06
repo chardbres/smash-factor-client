@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import { Redirect } from 'react-router-dom'
 import { deleteClub, getClub, updateClub } from '../../api/clubs'
 import SingleClub from '../Shared/SingleClub'
-// import Shots from '../Shots/Shots'
 import ClubForm from '../Shared/ClubForm'
 import '../../index.scss'
 
@@ -73,10 +72,6 @@ const Club = props => {
         />
       </div>
     </div>
-    // <Shots
-    //   club={props.match.params.id}
-    //   user={props.user}
-    // />
   )
 }
 
