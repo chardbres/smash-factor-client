@@ -6,6 +6,8 @@
 * #### Link to deployed API site: <https://warm-waters-93478.herokuapp.com/>
 
 ## Links to user stories and wireframes
+* #### Link to user stories: <https://github.com/chardbres/smash-factor-client/blob/master/user-stories.md>
+* #### Link to wireframes: <https://github.com/chardbres/smash-factor-client/blob/master/wireframes.jpg>
 
 ## Description
 
@@ -29,3 +31,6 @@ Smash factor is an application built with React, for users to track their golf c
 * Complete all functionality to add shot-tracking functionality to all clubs: single entries of distance and shot quality, with timestamps, and data analysis such as average distance over time.
 * Complete all alerts related to action success/failure for the user.
 * Improve overall styling and functionality.
+
+## Screenshot
+![](screenshot.png)
