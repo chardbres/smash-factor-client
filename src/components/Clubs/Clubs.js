@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react'
 import { createClub, index } from '../../api/clubs'
 import SingleClub from '../Shared/SingleClub.js'
 import ClubForm from '../Shared/ClubForm.js'
+import messages from '../AutoDismissAlert/messages'
+
 import '../../index.scss'
 
 const Clubs = props => {
@@ -22,7 +24,15 @@ const Clubs = props => {
         index(props.user)
           .then(res => setClubs(res.data.clubs))
       )
-      .catch(console.error)
+      .catch(error => {
+        console.error(error)
+        setClub({ style: '', brand: '', loft: '', flex: '' })
+        alert({
+          heading: 'Club creation failed!',
+          message: messages.clubCreateFailure,
+          variant: 'danger'
+        })
+      // .catch(console.error)
   }
 
   const handleChange = event => {
