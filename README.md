@@ -17,7 +17,8 @@ Smash factor is an application built with React, for users to track their golf c
 * React (JavaScript): all front-end displays and actions
 * Axios: all API calls
 * SCSS: styling for React components
-* Git/Github: version control
+* Git/Github: version control and client site hosting
+* Node.js/npm: necessary dependencies for functionality
 * Markdown: README and user stories
 
 
