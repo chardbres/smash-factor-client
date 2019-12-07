@@ -18,6 +18,8 @@ const Club = props => {
 
   // Removes a single resource via the axios call in api/clubs.js
   const destroy = () => {
+    const { alert } = props
+
     deleteClub(club._id, props.user)
       // Alerts user to successful club deletion
       .then(() => alert({
@@ -45,9 +47,23 @@ const Club = props => {
   }
 
   const update = () => {
+    const { alert } = props
+
     updateClub(club._id, props.user, { club })
-      .then()
-      .catch(console.error)
+      .then(() => alert({
+        heading: 'Club updated successfully!',
+        message: messages.clubUpdateSuccess,
+        variant: 'success'
+      }))
+      .catch(error => {
+        console.error(error)
+        setClub({ style: '', brand: '', loft: '', flex: '' })
+        alert({
+          heading: 'Failed to update club!',
+          message: messages.clubCreateFailure,
+          variant: 'danger'
+        })
+      })
   }
 
   const handleChange = event => {

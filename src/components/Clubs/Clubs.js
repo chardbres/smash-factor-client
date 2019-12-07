@@ -26,6 +26,8 @@ const Clubs = props => {
   }, [])
 
   const create = () => {
+    const { alert } = props
+
     createClub(props.user, { club })
       .then(res => clubs.push(res.data.club))
       // Alerts user to successful creation of club

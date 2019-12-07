@@ -10,5 +10,7 @@ export default {
   clubCreateFailure: 'Failed to create club! Make sure the club style is filled in, and that the club is unique and try again',
   clubCreateSuccess: 'Club was successfully created!',
   clubDeleteFailure: 'Failed to delete club!',
-  clubDeleteSuccess: 'Club successfully deleted!'
+  clubDeleteSuccess: 'Club successfully deleted!',
+  clubUpdateFailure: 'Failed to update club!',
+  clubUpdateSuccess: 'Club successfully updated!'
 }
