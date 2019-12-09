@@ -33,7 +33,7 @@ const Clubs = props => {
       // Alerts user to successful creation of club
       .then(() => alert({
         heading: 'Club created successfully!',
-        message: messages.clubCreateSuccess,
+        message: '',
         variant: 'success'
       }))
       // Re-runs the index to get the club list with the newly-created club for re-render

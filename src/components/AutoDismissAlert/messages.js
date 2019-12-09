@@ -8,9 +8,9 @@ export default {
   changePasswordFailure: 'Failed to change passwords. Check your old password and try again.',
   // Club crud failure messages
   clubCreateFailure: 'Failed to create club! Make sure the club style is filled in, and that the club is unique and try again',
-  clubCreateSuccess: 'Club was successfully created!',
+  // clubCreateSuccess: 'Club was successfully created!',
   clubDeleteFailure: 'Failed to delete club!',
-  clubDeleteSuccess: 'Club successfully deleted!',
-  clubUpdateFailure: 'Failed to update club!',
-  clubUpdateSuccess: 'Club successfully updated!'
+  // clubDeleteSuccess: 'Club successfully deleted!',
+  clubUpdateFailure: 'Failed to update club! Make sure that the club style is unique and try again!'
+  // clubUpdateSuccess: 'Club successfully updated!'
 }

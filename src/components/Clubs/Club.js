@@ -24,7 +24,7 @@ const Club = props => {
       // Alerts user to successful club deletion
       .then(() => alert({
         heading: 'Club deleted successfully!',
-        message: messages.clubDeleteSuccess,
+        message: '',
         variant: 'success'
       }))
       .then(() => setDeleted(true))
@@ -32,7 +32,7 @@ const Club = props => {
         console.error(error)
         setClub({ style: '', brand: '', loft: '', flex: '' })
         alert({
-          heading: 'Sign In Failed',
+          heading: 'Failed to delete club!',
           message: messages.clubDeleteFailure,
           variant: 'danger'
         })
@@ -52,7 +52,7 @@ const Club = props => {
     updateClub(club._id, props.user, { club })
       .then(() => alert({
         heading: 'Club updated successfully!',
-        message: messages.clubUpdateSuccess,
+        message: '',
         variant: 'success'
       }))
       .catch(error => {
@@ -60,7 +60,7 @@ const Club = props => {
         setClub({ style: '', brand: '', loft: '', flex: '' })
         alert({
           heading: 'Failed to update club!',
-          message: messages.clubCreateFailure,
+          message: messages.clubUpdateFailure,
           variant: 'danger'
         })
       })
