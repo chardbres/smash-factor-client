@@ -2,7 +2,7 @@ import apiUrl from '../apiConfig'
 import axios from 'axios'
 
 // Indexes all shots
-export const index = (id, user) => {
+export const index = id => {
   return axios({
     url: `${apiUrl}/clubs/${id}/shots`,
     method: 'GET',
