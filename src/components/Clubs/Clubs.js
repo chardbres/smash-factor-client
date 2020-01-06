@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import { withRouter } from 'react-router-dom'
 import { createClub, index } from '../../api/clubs'
-import SingleClub from '../Shared/SingleClub.js'
+// import Table from 'react-bootstrap/Table'
+import BootstrapTable from 'react-bootstrap-table-next'
+
+// Custom component imports
+// import SingleClub from '../Shared/SingleClub.js'
 import ClubForm from '../Shared/ClubForm.js'
 import messages from '../AutoDismissAlert/messages'
 import '../../index.scss'
@@ -10,6 +14,7 @@ const Clubs = props => {
   const [clubs, setClubs] = useState([])
   const [club, setClub] = useState({ style: '', brand: '', loft: '', flex: '' })
 
+  console.log(clubs)
   useEffect(() => {
     index(props.user)
       .then(res => setClubs(res.data.clubs))
@@ -62,30 +67,88 @@ const Clubs = props => {
     create()
   }
 
-  const clubsList = clubs.map(club => (
-    <SingleClub key={club._id}
-      id={club._id}
-      style={club.style}
-      brand={club.brand}
-      loft={club.loft}
-      flex={club.flex}
-      user={props.user}
-    />
-  ))
+  // const clubsList = clubs.map(club => (
+  //   <SingleClub key={club._id}
+  //     id={club._id}
+  //     style={club.style}
+  //     brand={club.brand}
+  //     loft={club.loft}
+  //     flex={club.flex}
+  //     user={props.user}
+  //   />
+  // ))
+
+  const columns = [
+    {
+      dataField: '_id',
+      hidden: true
+    },
+    {
+      dataField: 'style',
+      text: 'Type',
+      sort: true
+    },
+    {
+      dataField: 'brand',
+      text: 'Set',
+      sort: true
+    },
+    {
+      dataField: 'loft',
+      text: 'Loft',
+      sort: true,
+      // eslint-disable-next-line react/display-name
+      formatter: (cell, row) => { return <p>{cell}&#xb0;</p> }
+    },
+    {
+      dataField: 'flex',
+      text: 'Flex',
+      sort: true
+    }
+  ]
 
   return (
     <div className="clubs-canvas">
       <h3>Your Clubs</h3>
-      <Table>
-        {clubsList}
-      </Table>
       <div className="form-header"><h6>Use the form to add a new club</h6></div>
-        <ClubForm
-          club={club}
-          handleChange={handleChange}
-          handleSubmit={handleSubmit}
-        />
+      <ClubForm
+        club={club}
+        handleChange={handleChange}
+        handleSubmit={handleSubmit}
+      />
+      <BootstrapTable
+        keyField='id'
+        data={clubs}
+        columns={columns}
+        sort={ { dataField: 'style', order: 'asc' } }
+        tdClassName="club-cell"
+        striped
+        hover
+        condensed
+      />
     </div>
+  // <div className="clubs-canvas">
+  //   <h3>Your Clubs</h3>
+  //   <Table striped bordered hover>
+  //     <thead>
+  //       <tr className="title-row">
+  //         <th>Type</th>
+  //         <th>Set</th>
+  //         <th>Loft</th>
+  //         <th>Flex</th>
+  //       </tr>
+  //     </thead>
+  //     <tbody>
+  //       {clubsList}
+  //     </tbody>
+  //   </Table>
+  //   <div className="form-header"><h6>Use the form to add a new club</h6></div>
+  //   <ClubForm
+  //     club={club}
+  //     handleChange={handleChange}
+  //     handleSubmit={handleSubmit}
+  //   />
+  // </div>
   )
 }
 

@@ -13,14 +13,12 @@ const SingleClub = props => {
   }
 
   return (
-    <React.Fragment>
-      <tr className="club-row" key={props.id} onClick={() => setClicked(true)}>
-        <td>{props.style}</td>
-        <td>{props.brand}</td>
-        <td>{props.loft}</td>
-        <td>{props.flex}</td>
-      </tr>
-    </React.Fragment>
+    <tr className="club-row" key={props.id} onClick={() => setClicked(true)}>
+      <td>{props.style}</td>
+      <td>{props.brand}</td>
+      <td>{props.loft}&#xb0;</td>
+      <td>{props.flex}</td>
+    </tr>
   )
 
   // // This was the initial code for displaying the clubs
