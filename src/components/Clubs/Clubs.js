@@ -76,21 +76,15 @@ const Clubs = props => {
   return (
     <div className="clubs-canvas">
       <h3>Your Clubs</h3>
-      <div className="container">
-        <row className="title-row">
-          <div><h5>Type</h5></div>
-          <div><h5>Set</h5></div>
-          <div><h5>Loft</h5></div>
-          <div><h5>Flex</h5></div>
-        </row>
+      <Table>
         {clubsList}
-        <div className="form-header"><h6>Use the form to add a new club</h6></div>
+      </Table>
+      <div className="form-header"><h6>Use the form to add a new club</h6></div>
         <ClubForm
           club={club}
           handleChange={handleChange}
           handleSubmit={handleSubmit}
         />
-      </div>
     </div>
   )
 }

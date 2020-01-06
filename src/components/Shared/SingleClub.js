@@ -12,28 +12,28 @@ const SingleClub = props => {
     } />
   }
 
-  // return (
-  //   <React.Fragment>
-  //     <tr className="club-row" key={props.id} onClick={() => setClicked(true)}>
-  //       <td>{props.style}</td>
-  //       <td>{props.brand}</td>
-  //       <td>{props.loft}</td>
-  //       <td>{props.flex}</td>
-  //     </tr>
-  //   </React.Fragment>
-  // )
-
-  // This was the initial code for displaying the clubs
   return (
-    <div>
-      <row className="club-row" key={props.id} onClick={() => setClicked(true)}>
-        <div><h5>{props.style}</h5></div>
-        <div><h5>{props.brand}</h5></div>
-        <div><h5>{props.loft}&#xb0;</h5></div>
-        <div><h5>{props.flex}</h5></div>
-      </row>
-    </div>
+    <React.Fragment>
+      <tr className="club-row" key={props.id} onClick={() => setClicked(true)}>
+        <td>{props.style}</td>
+        <td>{props.brand}</td>
+        <td>{props.loft}</td>
+        <td>{props.flex}</td>
+      </tr>
+    </React.Fragment>
   )
+
+  // // This was the initial code for displaying the clubs
+  // return (
+  //   <div>
+  //     <row className="club-row" key={props.id} onClick={() => setClicked(true)}>
+  //       <div><h5>{props.style}</h5></div>
+  //       <div><h5>{props.brand}</h5></div>
+  //       <div><h5>{props.loft}&#xb0;</h5></div>
+  //       <div><h5>{props.flex}</h5></div>
+  //     </row>
+  //   </div>
+  // )
 }
 
 export default SingleClub

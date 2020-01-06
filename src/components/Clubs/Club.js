@@ -5,6 +5,7 @@ import SingleClub from '../Shared/SingleClub'
 import ClubForm from '../Shared/ClubForm'
 import messages from '../AutoDismissAlert/messages'
 import '../../index.scss'
+// This is a test
 
 const Club = props => {
   const [club, setClub] = useState({ style: '', brand: '', loft: '', flex: '' })
