@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { withRouter } from 'react-router-dom'
 import { createClub, index } from '../../api/clubs'
-// import Table from 'react-bootstrap/Table'
 import BootstrapTable from 'react-bootstrap-table-next'
 
 // Custom component imports
@@ -67,17 +66,6 @@ const Clubs = props => {
     create()
   }
 
-  // const clubsList = clubs.map(club => (
-  //   <SingleClub key={club._id}
-  //     id={club._id}
-  //     style={club.style}
-  //     brand={club.brand}
-  //     loft={club.loft}
-  //     flex={club.flex}
-  //     user={props.user}
-  //   />
-  // ))
-
   const columns = [
     {
       dataField: '_id',
@@ -107,6 +95,13 @@ const Clubs = props => {
     }
   ]
 
+  const rowEvents = {
+    // eslint-disable-next-line react/display-name
+    onClick: (e, row, rowIndex) => {
+      location.href = `#/clubs/${row._id}`
+    }
+  }
+
   return (
     <div className="clubs-canvas">
       <h3>Your Clubs</h3>
@@ -117,38 +112,17 @@ const Clubs = props => {
         handleSubmit={handleSubmit}
       />
       <BootstrapTable
-        keyField='id'
+        keyField='_id'
         data={clubs}
         columns={columns}
         sort={ { dataField: 'style', order: 'asc' } }
+        rowEvents={rowEvents}
         tdClassName="club-cell"
         striped
         hover
         condensed
       />
     </div>
-  // <div className="clubs-canvas">
-  //   <h3>Your Clubs</h3>
-  //   <Table striped bordered hover>
-  //     <thead>
-  //       <tr className="title-row">
-  //         <th>Type</th>
-  //         <th>Set</th>
-  //         <th>Loft</th>
-  //         <th>Flex</th>
-  //       </tr>
-  //     </thead>
-  //     <tbody>
-  //       {clubsList}
-  //     </tbody>
-  //   </Table>
-  //   <div className="form-header"><h6>Use the form to add a new club</h6></div>
-  //   <ClubForm
-  //     club={club}
-  //     handleChange={handleChange}
-  //     handleSubmit={handleSubmit}
-  //   />
-  // </div>
   )
 }
 
