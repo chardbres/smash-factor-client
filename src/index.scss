@@ -73,14 +73,10 @@ table thead .navbar-fixed-bottom .dropdown .caret {
 .form-header {
   background-color: #A0A0A0;
   display: flex;
+  font-weight: bold;
   justify-content: center;
-  margin-top: 2%;
+  margin: 2% auto 0;
   width: 100%;
-
-  * {
-    font-weight: bold;
-    margin: auto;
-  }
 }
 
 .header {
