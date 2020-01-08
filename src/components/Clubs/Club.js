@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { Redirect } from 'react-router-dom'
 import { deleteClub, getClub, updateClub } from '../../api/clubs'
-import SingleClub from '../Shared/SingleClub'
+import BootstrapTable from 'react-bootstrap-table-next'
+
 import ClubForm from '../Shared/ClubForm'
 import messages from '../AutoDismissAlert/messages'
 import '../../index.scss'
@@ -77,32 +78,53 @@ const Club = props => {
     update()
   }
 
+  // Definitions for the react-bootstrap-table
+  const columns = [
+    {
+      dataField: '_id',
+      hidden: true
+    },
+    {
+      dataField: 'style',
+      text: 'Type'
+    },
+    {
+      dataField: 'brand',
+      text: 'Set'
+    },
+    {
+      dataField: 'loft',
+      text: 'Loft',
+      // eslint-disable-next-line react/display-name
+      formatter: (cell, row) => { return <p>{cell}&#xb0;</p> }
+    },
+    {
+      dataField: 'flex',
+      text: 'Flex'
+    }
+  ]
+  // --------------------
+
   return (
     <div className="clubs-canvas">
       <h3>Here is your club!</h3>
-      <div className="container">
-        <row className="title-row">
-          <div><h5>Type</h5></div>
-          <div><h5>Set</h5></div>
-          <div><h5>Loft</h5></div>
-          <div><h5>Flex</h5></div>
-        </row>
-        <SingleClub key={club._id}
-          id={club._id}
-          style={club.style}
-          brand={club.brand}
-          loft={club.loft}
-          flex={club.flex}
-          user={props.user}
-        />
-        <button onClick={destroy}>Delete Club</button>
-        <div className="form-header"><h6>Use the form to make changes to this club</h6></div>
-        <ClubForm
-          club={club}
-          handleChange={handleChange}
-          handleSubmit={handleSubmit}
-        />
-      </div>
+      <BootstrapTable
+        keyField='_id'
+        // Data must be array, so club object is re-cast
+        data={[club]}
+        columns={columns}
+        tdClassName="club-cell"
+        striped
+        hover
+        condensed
+      />
+      <button onClick={destroy}>Delete Club</button>
+      <div className="form-header"><h6>Use the form to make changes to this club</h6></div>
+      <ClubForm
+        club={club}
+        handleChange={handleChange}
+        handleSubmit={handleSubmit}
+      />
     </div>
   )
 }

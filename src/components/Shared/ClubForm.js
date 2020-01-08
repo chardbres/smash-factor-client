@@ -6,7 +6,7 @@ const ClubForm = ({ club, handleSubmit, handleChange }) => (
     <div>
       <input
         type="text"
-        placeholder="Style"
+        placeholder="Type"
         value={club.style}
         name="style"
         onChange={handleChange}

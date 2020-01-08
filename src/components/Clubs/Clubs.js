@@ -13,19 +13,9 @@ const Clubs = props => {
   const [clubs, setClubs] = useState([])
   const [club, setClub] = useState({ style: '', brand: '', loft: '', flex: '' })
 
-  console.log(clubs)
   useEffect(() => {
     index(props.user)
       .then(res => setClubs(res.data.clubs))
-      // Attempt at function to sort clubs alphabetically by style upon indexing
-      .then(clubs.sort(function (a, b) {
-        if (a.clubs.style < b.clubs.club.style) {
-          return -1
-        }
-        if (a.clubs.style > b.clubs.club.style) {
-          return 1
-        }
-      }))
       .catch(console.error)
   }, [])
 
@@ -66,6 +56,7 @@ const Clubs = props => {
     create()
   }
 
+  // Definitions for the react-bootstrap-table
   const columns = [
     {
       dataField: '_id',
@@ -101,6 +92,7 @@ const Clubs = props => {
       location.href = `#/clubs/${row._id}`
     }
   }
+  // --------------------
 
   return (
     <div className="clubs-canvas">
