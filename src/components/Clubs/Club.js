@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Redirect } from 'react-router-dom'
 import { deleteClub, getClub, updateClub } from '../../api/clubs'
+import Button from 'react-bootstrap/Button'
 import BootstrapTable from 'react-bootstrap-table-next'
 
 import ClubForm from '../Shared/ClubForm'
@@ -108,6 +109,12 @@ const Club = props => {
   return (
     <div className="clubs-canvas">
       <h3>Here is your club!</h3>
+      <h6 className="form-header">Use the form to make changes to this club</h6>
+      <ClubForm
+        club={club}
+        handleChange={handleChange}
+        handleSubmit={handleSubmit}
+      />
       <BootstrapTable
         keyField='_id'
         // Data must be array, so club object is re-cast
@@ -118,13 +125,7 @@ const Club = props => {
         hover
         condensed
       />
-      <button onClick={destroy}>Delete Club</button>
-      <div className="form-header"><h6>Use the form to make changes to this club</h6></div>
-      <ClubForm
-        club={club}
-        handleChange={handleChange}
-        handleSubmit={handleSubmit}
-      />
+      <Button variant="danger" onClick={destroy}>Delete Club</Button>
     </div>
   )
 }
