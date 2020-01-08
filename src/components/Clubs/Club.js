@@ -11,6 +11,7 @@ import '../../index.scss'
 
 const Club = props => {
   const [club, setClub] = useState({ style: '', brand: '', loft: '', flex: '' })
+  // const [shots, setShots] = useState([])
   const [deleted, setDeleted] = useState(false)
 
   useEffect(() => {
