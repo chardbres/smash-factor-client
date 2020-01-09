@@ -154,7 +154,8 @@ const Club = props => {
 
   const shotColumns = [
     {
-      dataField: 'club'
+      dataField: 'club',
+      hidden: true
     },
     {
       dataField: 'distance',
