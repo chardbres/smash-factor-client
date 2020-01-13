@@ -216,7 +216,6 @@ const Club = props => {
           props => (
             <div>
               <MyExportCSV { ...props.csvProps } />
-              <hr />
               <BootstrapTable { ...props.baseProps } />
             </div>
           )
