@@ -9,8 +9,8 @@
   justify-content: center;
 
   h3 {
-    font-weight: bold
-    // margin: 0 auto 2%;
+    font-weight: bold;
+    margin: 2% auto;
   }
 
   .container {
@@ -20,18 +20,18 @@
   }
 }
 
-.club-form {
+.club-form, .shot-form {
   display: flex;
-  flex-direction: column;
-  margin-bottom: 2rem;
+  flex-direction: row;
+  margin-bottom: 1rem;
 
   div {
     justify-content: center;
     display: flex;
     width: 100%;
 
-    * {
-      width: 25%;
+    Button {
+      margin: 0 .5rem;
     }
   }
 }
@@ -71,9 +71,8 @@ table thead .navbar-fixed-bottom .dropdown .caret {
 // --------------------
 
 .form-header {
-  background-color: #A0A0A0;
   display: flex;
-  font-weight: bold;
+  font-style: italic;
   justify-content: center;
   margin: 2% auto 0;
   width: 100%;

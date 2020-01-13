@@ -3,6 +3,7 @@ import { Redirect } from 'react-router-dom'
 import { deleteClub, getClub, updateClub } from '../../api/clubs'
 import Button from 'react-bootstrap/Button'
 import BootstrapTable from 'react-bootstrap-table-next'
+import ToolkitProvider from 'react-bootstrap-table2-toolkit'
 
 import ClubForm from '../Shared/ClubForm'
 import ShotForm from '../Shared/ShotForm'
@@ -28,12 +29,10 @@ const Club = props => {
       .catch(console.error)
   }, [])
 
-  // Removes a single resource via the axios call in api/clubs.js
   const destroy = () => {
     const { alert } = props
 
     deleteClub(club._id, props.user)
-      // Alerts user to successful club deletion
       .then(() => alert({
         heading: 'Club deleted successfully!',
         message: '',
@@ -51,7 +50,6 @@ const Club = props => {
       })
   }
 
-  // Redirects the user to the main clubs page upon club deletion
   if (deleted) {
     return <Redirect to={
       { pathname: '/clubs' }
@@ -78,7 +76,6 @@ const Club = props => {
       })
   }
 
-  // Creates a new shot with the current club and updates the shot state
   const makeShot = () => {
     const { alert } = props
 
@@ -166,20 +163,34 @@ const Club = props => {
       text: 'Quality'
     }
   ]
+
+  const MyExportCSV = (props) => {
+    const handleClick = () => {
+      props.onExport()
+    }
+
+    return (
+      <div>
+        <Button variant="success" size="sm" onClick={ handleClick }>Export shots as CSV</Button>
+      </div>
+    )
+  }
   // --------------------
 
   return (
     <div className="clubs-canvas">
       <h3>Here is your club!</h3>
-      <h6 className="form-header">Use the form to make changes to this club</h6>
-      <ClubForm
-        club={club}
-        handleChange={handleClubChange}
-        handleSubmit={handleClubSubmit}
-      />
+      <h5 className="form-header">Use this form to make changes to this club, or delete it</h5>
+      <div className="club-form">
+        <ClubForm
+          club={club}
+          handleChange={handleClubChange}
+          handleSubmit={handleClubSubmit}
+        />
+        <Button variant="danger" size="sm" onClick={destroy}>Delete Club</Button>
+      </div>
       <BootstrapTable
         keyField='_id'
-        // Data must be array, so club object is re-cast
         data={[club]}
         columns={clubColumns}
         tdClassName="club-cell"
@@ -187,21 +198,30 @@ const Club = props => {
         hover
         condensed
       />
-      <Button variant="danger" onClick={destroy}>Delete Club</Button>
-      <ShotForm
-        shot={shot}
-        handleChange={handleShotChange}
-        handleSubmit={handleShotSubmit}
-      />
-      <BootstrapTable
-        keyField='club'
-        // Data must be array, so shot object is re-cast
-        data={shots}
-        columns={shotColumns}
-        tdClassName="shot-cell"
-        hover
-        condensed
-      />
+      <h5 className="form-header">Use this form to add shots made with this club</h5>
+      <div className="shot-form">
+        <ShotForm
+          shot={shot}
+          handleChange={handleShotChange}
+          handleSubmit={handleShotSubmit}
+        />
+      </div>
+      <ToolkitProvider
+        keyField="id"
+        data={ shots }
+        columns={ shotColumns }
+        exportCSV
+      >
+        {
+          props => (
+            <div>
+              <MyExportCSV { ...props.csvProps } />
+              <hr />
+              <BootstrapTable { ...props.baseProps } />
+            </div>
+          )
+        }
+      </ToolkitProvider>
     </div>
   )
 }

@@ -17,7 +17,6 @@ const unauthenticatedOptions = (
     <Nav.Link href="#sign-in">Sign In</Nav.Link>
   </Fragment>
 )
-
 // const alwaysOptions = (
 //   <Fragment>
 //     <Nav.Link href="#clubs">Home</Nav.Link>
@@ -25,7 +24,7 @@ const unauthenticatedOptions = (
 // )
 
 const Header = ({ user }) => (
-  <Navbar bg="primary" variant="dark" expand="md">
+  <Navbar bg="dark" variant="dark" expand="md">
     <Navbar.Brand className="header">
       <span className="title">Smash Factor!</span><span className="tagline">The ultimate golf club performance tracker</span>
     </Navbar.Brand>

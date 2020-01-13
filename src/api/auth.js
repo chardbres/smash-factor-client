@@ -15,6 +15,19 @@ export const signUp = credentials => {
   })
 }
 
+export const demoSignIn = () => {
+  return axios({
+    url: apiUrl + '/sign-in',
+    method: 'POST',
+    data: {
+      credentials: {
+        email: 'demo@demo.com',
+        password: 'demo'
+      }
+    }
+  })
+}
+
 export const signIn = credentials => {
   return axios({
     url: apiUrl + '/sign-in',
@@ -53,3 +66,5 @@ export const changePassword = (passwords, user) => {
     }
   })
 }
+
+export default demoSignIn

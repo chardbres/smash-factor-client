@@ -1,8 +1,10 @@
 import React from 'react'
 import '../../index.scss'
 
+import Button from 'react-bootstrap/Button'
+
 const ClubForm = ({ club, handleSubmit, handleChange }) => (
-  <form className="club-form" onSubmit={handleSubmit}>
+  <form onSubmit={handleSubmit}>
     <div>
       <input
         type="text"
@@ -34,9 +36,7 @@ const ClubForm = ({ club, handleSubmit, handleChange }) => (
         <option value="X-Stiff">X-Stiff</option>
         <option value="Wedge Flex">Wedge Flex</option>
       </select>
-    </div>
-    <div>
-      <button type="submit">Submit</button>
+      <Button variant="primary" size="sm" type="submit">Submit</Button>
     </div>
   </form>
 )

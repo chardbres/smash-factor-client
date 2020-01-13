@@ -4,7 +4,6 @@ import { createClub, index } from '../../api/clubs'
 import BootstrapTable from 'react-bootstrap-table-next'
 
 // Custom component imports
-// import SingleClub from '../Shared/SingleClub.js'
 import ClubForm from '../Shared/ClubForm.js'
 import messages from '../AutoDismissAlert/messages'
 import '../../index.scss'
@@ -97,12 +96,14 @@ const Clubs = props => {
   return (
     <div className="clubs-canvas">
       <h3>Your Clubs</h3>
-      <div className="form-header"><h6>Use the form to add a new club</h6></div>
-      <ClubForm
-        club={club}
-        handleChange={handleChange}
-        handleSubmit={handleSubmit}
-      />
+      <h5 className="form-header">Use this form to add a new club</h5>
+      <div className="club-form">
+        <ClubForm
+          club={club}
+          handleChange={handleChange}
+          handleSubmit={handleSubmit}
+        />
+      </div>
       <BootstrapTable
         keyField='_id'
         data={clubs}
