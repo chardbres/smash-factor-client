@@ -18,10 +18,12 @@ const Club = props => {
   const [deleted, setDeleted] = useState(false)
 
   useEffect(() => {
+    // API call for a single club
     getClub(props.match.params.id, props.user)
       .then(res => setClub(res.data.club))
       .catch(console.error)
 
+    // API call for indexing all shots for a single club
     index(props.match.params.id, props.user)
       .then(res => setShots(res.data.shots))
       .catch(console.error)
@@ -94,7 +96,8 @@ const Club = props => {
         setShot({ distance: '', quality: '' })
         console.log(shot)
         alert({
-          heading: 'Failed to create shot!',
+          heading: 'Failed to add shot!',
+          message: messages.clubUpdateFailure,
           variant: 'danger'
         })
       })
@@ -180,7 +183,7 @@ const Club = props => {
       <h5 className="form-header">Use this form to make changes to this club, or delete it</h5>
       <div className="club-form">
         <ClubForm
-          club=''
+          club={club}
           handleChange={handleClubChange}
           handleSubmit={handleClubSubmit}
         />
